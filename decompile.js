@@ -3,12 +3,22 @@ const path = require('path'),
     fs = require('fs');
 
 function main(args) {
-    console.log(args.file)
-    console.log(args.ignoreNodeModules)
-
     file = path.resolve(args.file)
 
-    const buf = fs.readFileSync(file)
+    try {
+        buf = fs.readFileSync(file)
+    } catch (err) {
+        console.log("Could not open file '" + file + "'")
+        return
+    }
+
+    // Check if it's a nexe file
+    nexeSentinel = buf.slice(buf.length - 32, buf.length - 16).toString()
+    
+    if (nexeSentinel != '<nexe~~sentinel>') {
+        console.log("File is not a portale nexe executable.")
+        return
+    }
 
     offset = buf.length - 16
 
@@ -33,7 +43,7 @@ function main(args) {
         if (resourcePath.includes("node_modules") && args.ignoreNodeModules) {
             continue;
         }
-                
+
         resourceOffset = bundleOffset + value[0]
         resource = buf.slice(resourceOffset, resourceOffset + value[1])
     
