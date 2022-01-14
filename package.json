@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Decompile nexe bundled nodejs applications",
   "main": "decompile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bin": {
+    "nexe-decompile": "decompile.js"
   },
   "author": "",
   "license": "ISC",
