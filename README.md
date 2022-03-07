@@ -1,16 +1,14 @@
 # nexe-decompiler
-A decompiler for nexe
+An unpacker for popular js packers
 
 # Installation
-`npm install`
+`npm install --global nexe-decompile`
+
+## Support
+* [NEXE](https://github.com/nexe/nexe)
+* [caxa](https://github.com/leafac/caxa)
 
 # Usage
-To extract all Javascript including the node_modules run
 ```
-node decompile.js project.exe
-```
-
-To extract all Javascript without the node_modules run
-```
-node decompile.js project.exe --ignore-node-modules
+nexe-decompile -f packaged_file.exe
 ```
