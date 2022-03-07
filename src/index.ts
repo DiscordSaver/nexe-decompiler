@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import {Nexe} from './nexe';
 import yargs from 'yargs/yargs';
 import { argv } from 'process';
